@@ -16,7 +16,7 @@ io.on('connection',function(socket){
 		socket.broadcast.emit('toALL',msg)
 	})
 
-	socket.emit('msg',{
+	socket.emit('msg',{ // not being sent for the moment
 		text:'hello to the chat app'
 	})
 
