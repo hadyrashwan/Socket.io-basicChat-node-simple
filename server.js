@@ -1,15 +1,19 @@
-var express = require('express')
-//var bodyParser = require('body-parser')
-//var _ = require('underscore')
-var app = express()
 var PORT = process.env.PORT || 3000
-//app.use(bodyParser.json())
-var http =require('http').Server(app)
+var express = require('express')
+var app = express()
+var http =require('http').Server(app);
+var io = require('socket.io')(http);
 
 app.use(express.static(__dirname+'/public'))
 
 
+io.on('connection',function(socket){
+	console.log('User connceted via socket.io');
+})
+
+
+
 http.listen(PORT, function () {
 	// body...
-	console.log(" Server is now running on "+PORT)
+	console.log(" Server is now running on "+PORT); 
 })
