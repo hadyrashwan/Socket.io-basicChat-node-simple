@@ -9,6 +9,17 @@ app.use(express.static(__dirname+'/public'))
 
 io.on('connection',function(socket){
 	console.log('User connceted via socket.io');
+
+	socket.on('msg',function (msg) {
+		// body...
+		console.log('msg : '+msg.text)
+		socket.broadcast.emit('toALL',msg)
+	})
+
+	socket.emit('msg',{
+		text:'hello to the chat app'
+	})
+
 })
 
 
